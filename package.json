@@ -1,0 +1,11 @@
+{
+  "name": "telegram-typing-combat",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 5173 --bind 0.0.0.0",
+    "check": "node --check src/app.js",
+    "test": "npm run check"
+  }
+}

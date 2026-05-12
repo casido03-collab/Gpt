@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#7bd4ff" />
+    <title>Typing Kombat Mini App</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <section id="menuScreen" class="screen screen--active menu-screen" aria-labelledby="gameTitle">
+        <div class="hero-card">
+          <p class="eyebrow">Telegram Mini App Prototype</p>
+          <h1 id="gameTitle">Typing Kombat</h1>
+          <p class="subtitle">Печатай русские слова быстрее соперника, бей мечом и поднимайся в рейтинге.</p>
+        </div>
+
+        <div class="profile-grid" aria-label="Профиль игрока">
+          <article class="stat-card">
+            <span class="stat-card__label">Личный рейтинг</span>
+            <strong id="ratingValue">1000</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-card__label">Победы</span>
+            <strong id="winsValue">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-card__label">Лучшее слово</span>
+            <strong id="bestWordValue">—</strong>
+          </article>
+        </div>
+
+        <div class="menu-actions" aria-label="Выбор режима игры">
+          <button class="primary-btn" data-mode="ai">Бой с ИИ</button>
+          <button class="secondary-btn" data-mode="friend">Играть с другом</button>
+          <button class="secondary-btn" data-mode="random">Случайный соперник</button>
+        </div>
+
+        <section class="panel" aria-labelledby="sessionsTitle">
+          <div class="panel__header">
+            <h2 id="sessionsTitle">Поиск сессий</h2>
+            <span id="sessionStatus" class="pill">Готов</span>
+          </div>
+          <div id="sessionList" class="session-list"></div>
+        </section>
+
+        <section class="panel" aria-labelledby="leaderboardTitle">
+          <div class="panel__header">
+            <h2 id="leaderboardTitle">Топ игроков</h2>
+            <span class="pill">Live</span>
+          </div>
+          <ol id="leaderboard" class="leaderboard"></ol>
+        </section>
+      </section>
+
+      <section id="battleScreen" class="screen battle-screen" aria-labelledby="battleTitle">
+        <div class="battle-topbar">
+          <button id="backToMenu" class="ghost-btn" type="button">← Меню</button>
+          <div>
+            <p id="battleMode" class="eyebrow">Бой</p>
+            <h2 id="battleTitle">YOU <span>VS</span> ENEMY</h2>
+          </div>
+          <div id="timer" class="timer">1:25</div>
+        </div>
+
+        <div class="arena" aria-label="Арена боя">
+          <div class="hud hud--player">
+            <div class="hud__name">YOU</div>
+            <div class="health"><span id="playerHealthBar"></span></div>
+            <div id="playerHpText" class="hud__hp">120/120</div>
+            <div id="playerWord" class="word-bubble">молния</div>
+          </div>
+
+          <div class="hud hud--enemy">
+            <div class="hud__name">ENEMY</div>
+            <div class="health health--enemy"><span id="enemyHealthBar"></span></div>
+            <div id="enemyHpText" class="hud__hp">120/120</div>
+            <div id="enemyWord" class="word-bubble">буря</div>
+          </div>
+
+          <div class="sky">
+            <span class="cloud cloud--one"></span>
+            <span class="cloud cloud--two"></span>
+            <span class="cloud cloud--three"></span>
+          </div>
+          <div class="mountains" aria-hidden="true"></div>
+          <div class="field" aria-hidden="true"></div>
+
+          <div id="playerFighter" class="fighter fighter--player">
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="arm arm--front"></span>
+            <span class="arm arm--back"></span>
+            <span class="leg leg--front"></span>
+            <span class="leg leg--back"></span>
+            <span class="sword"></span>
+          </div>
+
+          <div id="enemyFighter" class="fighter fighter--enemy">
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="arm arm--front"></span>
+            <span class="arm arm--back"></span>
+            <span class="leg leg--front"></span>
+            <span class="leg leg--back"></span>
+            <span class="sword"></span>
+          </div>
+
+          <div id="hitFlash" class="hit-flash" aria-hidden="true">⚔</div>
+        </div>
+
+        <form id="typingForm" class="typing-panel" autocomplete="off">
+          <label for="typingInput">Введите слово быстрее соперника</label>
+          <div id="currentWord" class="current-word">молния</div>
+          <input id="typingInput" inputmode="text" autocapitalize="none" autocomplete="off" placeholder="печатай здесь…" />
+          <div id="typingHint" class="typing-hint">Правильный ввод наносит 15 урона.</div>
+        </form>
+      </section>
+    </div>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
